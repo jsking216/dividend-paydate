@@ -1,0 +1,17 @@
+{
+  "name": "dividend-paydate",
+  "version": "1.0.0",
+  "description": "dividend paydate trading bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "chromedriver": "^81.0.0",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  }
+}
