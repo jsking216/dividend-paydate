@@ -15,9 +15,26 @@ async function getPaydates() {
     await driver.findElement(webdriver.By.css('th.market-calendar-table__columnheader:nth-child(4) > button:nth-child(1) > span:nth-child(1)')).click();
     const tickers = await driver.findElements(webdriver.By.css('[data-column="symbol"]'));
     const exdiv = await driver.findElements(webdriver.By.css('[data-column="dividend_Ex_Date"]'));
-    const paydates = await driver.findElements(webdriver.By.css('[data-column="symbol"]'));
-    console.log(JSON.stringify({ tickers, exdiv, paydates}));
+    const paydates = await driver.findElements(webdriver.By.css('[data-column="payment_Date"]'));
+    const tickerArray = await getTextFromElements(tickers);
+    const exdivArray = await getTextFromElements(exdiv);
+    const paydatesArray = await getTextFromElements(paydates);
+
+    // push everything into an array of objects representing the data for a single ticker
+    const allData = [];
+    for(let i = 0; i < tickerArray.length; i++) {
+        allData.push({ ticker: tickerArray[i], exdiv: exdivArray[i], paydate: paydatesArray[i] });
+        console.log(JSON.stringify(allData[i]));
+    }
+
     await driver.quit();
+}
+
+async function getTextFromElements(elements) {
+    return Promise.all(elements.map(async (element) => {
+        const elementText = await element.getText();
+        return elementText;
+    }));
 }
 
 getPaydates();
