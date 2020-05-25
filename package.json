@@ -4,14 +4,23 @@
   "description": "dividend paydate trading bot",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start" : "nodemon --exec babel-node index.js"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
-    "chromedriver": "^81.0.0",
+    "chromedriver": "^83.0.0",
     "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
+    "nodemon": "^2.0.4"
   }
 }
