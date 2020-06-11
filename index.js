@@ -27,7 +27,6 @@ async function processPaydates() {
     const shouldFilter = newPaydates.some((paydate) => {
       return paydate.ticker === elem.ticker;
     });
-    console.log(`should filter ${elem.ticker}: ${shouldFilter}`);
     return !shouldFilter;
   });
 
