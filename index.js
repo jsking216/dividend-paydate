@@ -9,6 +9,7 @@ function readPaydates() {
   existing.map((elem) => {
     paydates.push(elem);
   });
+  
   return paydates;
 }
 
@@ -21,11 +22,19 @@ async function processPaydates() {
   const allPaydates = readPaydates();
   const newPaydates = await getPaydates();
 
-  newPaydates.map((elem) => {
-    allPaydates.push(elem);
+  // get rid of old ticker data
+  const filteredPaydates = allPaydates.filter((elem) => {
+    const shouldFilter = newPaydates.some((paydate) => {
+      return paydate.ticker === elem.ticker;
+    });
+    console.log(`should filter ${elem.ticker}: ${shouldFilter}`);
+    return !shouldFilter;
   });
 
-  writePaydates(allPaydates);
+  filteredPaydates.push(...newPaydates);
+
+  console.log(`Writing ${filteredPaydates.length} paydate records to file`);
+  writePaydates(filteredPaydates);
 }
 
 processPaydates();

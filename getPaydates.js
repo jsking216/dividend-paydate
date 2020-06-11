@@ -18,6 +18,7 @@ export async function getPaydates() {
     .withCapabilities(webdriver.Capabilities.chrome())
     .build();
     await driver.get('https://www.nasdaq.com/market-activity/dividends');
+    const allData = [];
     try {
         await driver.wait(webdriver.until.elementLocated(webdriver.By.className('evidon-banner-declinebutton')), 15000, 'waiting for cookie accept button');
         await driver.findElement(webdriver.By.className('evidon-banner-declinebutton')).click();
@@ -30,8 +31,8 @@ export async function getPaydates() {
         const paydatesArray = await getTextFromElements(paydates);
 
         // push everything into an array of objects representing the data for a single ticker
-        const allData = [];
-        for(let i = 0; i < tickerArray.length; i++) {
+        // start at 1 to skip the headers
+        for(let i = 1; i < tickerArray.length; i++) {
             allData.push({ ticker: tickerArray[i], exdiv: exdivArray[i], paydate: paydatesArray[i] });
             console.log(JSON.stringify(allData[i]));
         }

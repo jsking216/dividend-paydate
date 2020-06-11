@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start" : "nodemon --exec babel-node index.js"
+    "start": "babel-node index.js"
   },
   "type": "module",
   "author": "",
@@ -17,10 +17,10 @@
     "selenium-webdriver": "^4.0.0-alpha.7"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
     "nodemon": "^2.0.4"
   }
 }
