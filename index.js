@@ -1,4 +1,5 @@
-import { getPaydates } from './getPaydates';
+import { getPaydates } from './lib/getPaydates';
+import { getNextTradeFromTickerData } from './lib/getTrades';
 import { readFileSync, writeFileSync }  from 'fs';
 
 const datafile = 'persistentPaydates.json';
