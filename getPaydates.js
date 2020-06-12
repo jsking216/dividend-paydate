@@ -34,7 +34,7 @@ export async function getPaydates() {
         // start at 1 to skip the headers
         for(let i = 1; i < tickerArray.length; i++) {
             allData.push({ ticker: tickerArray[i], exdiv: exdivArray[i], paydate: paydatesArray[i] });
-            console.log(JSON.stringify(allData[i]));
+            console.log(JSON.stringify(allData[i-1]));
         }
     }
     catch (e) {
