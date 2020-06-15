@@ -39,6 +39,6 @@ async function processPaydates() {
 
 // TESTING
 (async () => {
-  // await processPaydates();
-  await getAllTickerStats(readPaydates());
+  await processPaydates();
+  //await getAllTickerStats(readPaydates());
 })()
