@@ -1,5 +1,5 @@
 import { getPaydates } from './lib/getPaydates';
-import { getNextTradeFromTickerData } from './lib/getTrades';
+import { getNextTradeFromTickerData, getAllTickerStats } from './lib/getTrades';
 import { readFileSync, writeFileSync }  from 'fs';
 
 const datafile = 'persistentPaydates.json';
@@ -37,4 +37,8 @@ async function processPaydates() {
   writePaydates(filteredPaydates);
 }
 
-processPaydates();
+// TESTING
+(async () => {
+  // await processPaydates();
+  await getAllTickerStats(readPaydates());
+})()
