@@ -2,22 +2,27 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
 	"github.com/jsking216/dividend-paydate/models"
 	"github.com/jsking216/dividend-paydate/utils"
+	log "github.com/sirupsen/logrus"
 )
 
-var NewPaydate models.PayDate
-
 func CreatePaydate(w http.ResponseWriter, r *http.Request) {
-	CreatePaydate := &models.PayDate{}
+	CreatePaydate := &models.Paydate{}
 	utils.ParseBody(r, CreatePaydate)
 	b := CreatePaydate.CreatePaydate()
 	res, _ := json.Marshal(b)
 	w.WriteHeader(http.StatusOK)
-	w.Write(res)
+	_, err := w.Write(res)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"Paydate": fmt.Sprintf("%+v", &b),
+		}).Error("Create Paydate call failed")
+	}
 }
 
 func GetAllPaydates(w http.ResponseWriter, r *http.Request) {

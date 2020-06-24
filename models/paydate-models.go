@@ -29,7 +29,7 @@ func (p *Paydate) CreatePaydate() *Paydate {
 
 func GetAllPaydates() []Paydate {
 	var Paydates []Paydate
-	db.Find(&Paydate)
+	db.Find(&Paydates)
 	return Paydates
 }
 
